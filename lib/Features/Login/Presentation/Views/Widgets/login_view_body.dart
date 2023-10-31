@@ -21,7 +21,7 @@ class _LoginViewBodyState extends State<LoginViewBody>
           const RiveAuthenticationAnimation(),
 
           Padding(
-            padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.45),
+            padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height <= 682.4 ? MediaQuery.sizeOf(context).height * 0.35 : MediaQuery.sizeOf(context).height * 0.4),
             child: const LoginViewBodyItems(),
           )
         ],

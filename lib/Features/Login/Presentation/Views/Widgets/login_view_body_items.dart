@@ -1,9 +1,10 @@
 import 'package:advanced_icon/advanced_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:pharmacy_app/Features/Login/Presentation/Views/Widgets/password_text_field.dart';
+import 'package:pharmacy_app/Core/Widgets/password_text_field.dart';
 import 'package:pharmacy_app/Features/Login/Presentation/Views/Widgets/register_link.dart';
-import 'package:pharmacy_app/Features/Login/Presentation/Views/Widgets/username_text_field.dart';
-import 'farmacia_section.dart';
+import 'package:pharmacy_app/Core/Widgets/username_text_field.dart';
+import 'package:pharmacy_app/Features/Login/Presentation/Views/Widgets/rive_authentication_animation.dart';
+import '../../../../../Core/Widgets/farmacia_section.dart';
 import 'forgot_password_link.dart';
 import 'login_button.dart';
 
@@ -19,6 +20,8 @@ class _LoginViewBodyItemsState extends State<LoginViewBodyItems>
 {
   bool isShowed = true;
   AdvancedIconState iconState = AdvancedIconState.primary;
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   void changeIconState()
   {
@@ -28,12 +31,14 @@ class _LoginViewBodyItemsState extends State<LoginViewBodyItems>
       {
         iconState = AdvancedIconState.secondary;
         isShowed = false;
+        RiveAuthenticationAnimation.isHandsUp?.change(true);
       }
 
       else
       {
         iconState = AdvancedIconState.primary;
         isShowed = true;
+        RiveAuthenticationAnimation.isHandsUp?.change(false);
       }
     });
   }
@@ -41,28 +46,32 @@ class _LoginViewBodyItemsState extends State<LoginViewBodyItems>
   @override
   Widget build(BuildContext context)
   {
-    return Column(
-      children: [
-        const UsernameTextField(),
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          const UsernameTextField(),
 
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
 
-        PasswordTextField(isShowed: isShowed, changeIconState: changeIconState, iconState: iconState, textOfLabel: 'password'),
+          PasswordTextField(isShowed: isShowed, changeIconState: changeIconState, iconState: iconState),
 
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.01),
 
-        const ForgotPasswordLink(),
+          const ForgotPasswordLink(),
 
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.03),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.03),
 
-        const LoginButton(),
+          LoginButton(formKey: formKey),
 
-        SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.07),
 
-        const RegisterLink(),
+          const RegisterLink(),
 
-        const FarmaciaSection()
-      ],
+          const FarmaciaSection()
+        ],
+      ),
     );
   }
 }

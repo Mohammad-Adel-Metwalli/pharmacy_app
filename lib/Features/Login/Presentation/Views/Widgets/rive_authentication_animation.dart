@@ -20,7 +20,7 @@ class _RiveAuthenticationAnimationState extends State<RiveAuthenticationAnimatio
   Widget build(BuildContext context)
   {
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height * 0.55),
+      padding: EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height <= 682.4 ? MediaQuery.sizeOf(context).height * 0.65 : MediaQuery.sizeOf(context).height * 0.6),
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height,
         width: double.infinity,

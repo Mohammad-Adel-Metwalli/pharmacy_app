@@ -1,32 +1,41 @@
 import 'package:advanced_icon/advanced_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pharmacy_app/Features/Login/Presentation/Views/Widgets/rive_authentication_animation.dart';
+import 'package:pharmacy_app/Core/Utils/styles.dart';
+import '../../../../../Core/Widgets/eye_icon.dart';
+import '../../../../Login/Presentation/Views/Widgets/rive_authentication_animation.dart';
 import '../../../../../Core/Utils/Functions/all_functions.dart';
 import '../../../../../Core/Utils/constant_colors.dart';
-import 'eye_icon.dart';
 
-class PasswordTextField extends StatefulWidget
+class ConfirmPasswordTextField extends StatefulWidget
 {
-  const PasswordTextField({super.key, required this.isShowed, required this.changeIconState, required this.iconState, required this.textOfLabel});
+  const ConfirmPasswordTextField({super.key, required this.isShowed, this.changeIconState, required this.iconState});
   final bool isShowed;
   final void Function()? changeIconState;
   final AdvancedIconState iconState;
-  final String textOfLabel;
+  static TextEditingController confirmPasswordController = TextEditingController();
 
   @override
-  State<PasswordTextField> createState() => _PasswordTextFieldState();
+  State<ConfirmPasswordTextField> createState() => _ConfirmPasswordTextFieldState();
 }
 
-class _PasswordTextFieldState extends State<PasswordTextField>
+class _ConfirmPasswordTextFieldState extends State<ConfirmPasswordTextField>
 {
   @override
   Widget build(BuildContext context)
-
   {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width * 0.32),
       child: TextFormField(
+        validator: (value)
+        {
+          if(value?.isEmpty ?? true)
+          {
+            return 'Field is required';
+          }
+          return null;
+        },
+        controller: ConfirmPasswordTextField.confirmPasswordController,
         obscureText: widget.isShowed,
         obscuringCharacter: '*',
         onFieldSubmitted: (value) => RiveAuthenticationAnimation.isHandsUp!.change(false),
@@ -40,7 +49,7 @@ class _PasswordTextFieldState extends State<PasswordTextField>
         cursorColor: ConstantColors.coralOrange,
         style: const TextStyle(color: ConstantColors.coralOrange, fontWeight: FontWeight.bold),
         decoration: InputDecoration(
-            label: Text(widget.textOfLabel, style: const TextStyle(color: ConstantColors.coralOrange, fontWeight: FontWeight.bold)),
+            label: const Text('confirm password', style: Styles.passwordStyle),
             prefixIcon: const Icon(FontAwesomeIcons.lock, color: ConstantColors.coralOrange),
             focusColor: ConstantColors.coralOrange,
             errorBorder: AllFunctions.buildOutlineInputBorder(),
