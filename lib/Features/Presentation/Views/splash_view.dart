@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_app/Core/Utils/constant_colors.dart';
+import 'package:pharmacy_app/Features/Presentation/Views/Widgets/splash_view_body.dart';
 
 class SplashView extends StatelessWidget
 {
@@ -7,6 +9,9 @@ class SplashView extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return const Scaffold();
+    return const Scaffold(
+      backgroundColor: ConstantColors.babyBlue,
+      body: SplashViewBody(),
+    );
   }
 }
