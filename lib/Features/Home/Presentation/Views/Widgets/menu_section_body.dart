@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:pharmacy_app/Core/Utils/constants.dart';
+import 'package:pharmacy_app/Features/Data/Models/profile_model.dart';
 import '../../../../../Core/Utils/constant_colors.dart';
 import 'copy_rights_section.dart';
 import 'menu_button.dart';
@@ -14,6 +17,9 @@ class MenuSectionBody extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
+    var profileBox = Hive.box<ProfileModel>(profileModelBoxName);
+    List<ProfileModel> listProfile = profileBox.values.toList();
+
     return Column(
       children: [
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
@@ -22,7 +28,7 @@ class MenuSectionBody extends StatelessWidget
 
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
 
-        Text('Dr. Alejandro', style: GoogleFonts.carterOne(fontWeight: FontWeight.bold, color: ConstantColors.babyPowder, fontSize: 20)),
+        Text('Dr. ${listProfile[0].username}', style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: ConstantColors.babyPowder, fontSize: 20)),
 
         SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
 

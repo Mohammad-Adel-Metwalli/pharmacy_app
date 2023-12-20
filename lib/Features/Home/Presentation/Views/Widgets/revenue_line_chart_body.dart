@@ -94,7 +94,7 @@ class RevenueLineChartBody extends StatelessWidget
 
         borderData: FlBorderData(
             show: true,
-            border: Border.all(color: ConstantColors.night, width: 2)
+            border: Border.all(color: ConstantColors.babyPowder, width: 2)
         ),
 
         gridData: FlGridData(
@@ -115,7 +115,7 @@ class RevenueLineChartBody extends StatelessWidget
             }
         ),
 
-        backgroundColor: ConstantColors.offWhite,
+        backgroundColor: ConstantColors.customedGrey,
         lineBarsData: [
           LineChartBarData(
             spots: const [

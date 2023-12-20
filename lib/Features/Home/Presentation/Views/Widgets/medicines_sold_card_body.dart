@@ -14,7 +14,7 @@ class MedicinesSoldCardBody extends StatelessWidget
     return Container(
       height: MediaQuery.sizeOf(context).height * 0.15,
       width: MediaQuery.sizeOf(context).width * 0.2,
-      decoration: BoxDecoration(color: ConstantColors.offWhite, borderRadius: BorderRadius.circular(15), border: Border.all(color: ConstantColors.night, width: 4)),
+      decoration: BoxDecoration(color: ConstantColors.customedGrey, borderRadius: BorderRadius.circular(15), border: Border.all(color: ConstantColors.babyPowder, width: 4)),
       child: const MedicinesSoldCardBodyItems(),
     );
   }

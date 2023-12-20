@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../Core/Utils/constant_colors.dart';
 import 'menu_button_items.dart';
 
@@ -15,8 +16,30 @@ class MenuButton extends StatelessWidget
     return InkWell(
       onTap: ()
       {
+        switch (label)
+        {
+          case 'Dashboard':
+            GoRouter.of(context).replace('/homeView');
+            break;
 
+          case 'Medicines':
+            GoRouter.of(context).push('/medicinesView');
+            break;
+
+          case 'Suppliers':
+            GoRouter.of(context).push('/suppliersView');
+            break;
+
+          case 'Accounts':
+            GoRouter.of(context).push('/accountsView');
+            break;
+
+          case 'Logout':
+            GoRouter.of(context).replace('/');
+            break;
+        }
       },
+
       borderRadius: BorderRadius.circular(15),
       child: Ink(
         height: MediaQuery.sizeOf(context).height * 0.06,

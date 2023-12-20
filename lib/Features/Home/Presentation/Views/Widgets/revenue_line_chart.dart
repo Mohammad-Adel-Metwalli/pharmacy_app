@@ -15,7 +15,7 @@ class RevenueLineChart extends StatelessWidget
       margin: EdgeInsets.only(right: MediaQuery.sizeOf(context).width * 0.01),
       height: MediaQuery.sizeOf(context).height * 0.7,
       width: MediaQuery.sizeOf(context).width * 0.82,
-      decoration: BoxDecoration(border: Border.all(color: ConstantColors.night, width: 4), borderRadius: BorderRadius.circular(15), color: ConstantColors.offWhite),
+      decoration: BoxDecoration(border: Border.all(color: ConstantColors.babyPowder, width: 4), borderRadius: BorderRadius.circular(15), color: ConstantColors.customedGrey),
       child: const RevenueLineChartBody(),
     );
   }
